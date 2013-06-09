@@ -1,0 +1,146 @@
+﻿<Window x:Class="MillingMachineApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="746" Width="794" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid">
+    <Grid>
+        <Canvas  Margin="53,55,45,125" Name="eminCanvas">
+
+            <!-- Draws a 100 by 50 rectangle with a solid blue fill. -->
+            <!-- Draws a 100 by 50 rectangle with a solid blue fill,
+                   a black outline, and rounded corners. -->
+            <TabControl Canvas.Left="27" Canvas.Top="20" Height="493" Name="tabControl1" Width="611">
+                <TabItem Header="Connection" Name="connectionTab">
+                    <Grid>
+                        <Label Content="COM Port:" Height="28" Margin="32,75,394,358" Name="label1" />
+                        <TextBox Height="23" Margin="158,77,323,361" Name="portBox" Text="COM4" Width="120" />
+                        <Button Content="Connect" Height="23" Margin="284,76,242,362" Name="connectButton" Width="75" Click="connectButton_Click" />
+                        <Button Content="Disconnect" Height="23" Margin="365,76,161,362" Name="disconnectButton" Width="75" Click="disconnectButton_Click" />
+                        <Label Content="Device Info:" Height="28" Margin="21,161,398,272" Name="deviceLabel" />
+                        <Label Content="Firmware:" Height="28" Margin="57,143,373,169" Name="firmwareLabel" />
+                        <TextBox Height="28" Margin="133,145,157,167" Name="firmwareBox" Width="201" />
+                        <Label Content="Protocol:" Height="28" Margin="57,182,377,130" Name="protocolLabel" />
+                        <TextBox Height="28" Margin="132,182,158,130" Name="protocolBox" Width="201" />
+                        <Label Content="Device Name:" Height="28" Margin="31,214,377,98" Name="label2" />
+                        <TextBox Height="26" Margin="132,216,158,98" Name="deviceNameBox" Width="201" />
+                        <Label Content="Bluetooth address:" Height="28" Margin="10,251,372,61" Name="BlueToothLabel" />
+                        <TextBox Height="23" Margin="132,251,158,66" Name="btAddressBox" Width="201" />
+                        <Label Content="Signal strength:" Height="28" Margin="21,289,378,23" Name="label4" />
+                        <TextBox Height="23" Margin="132,291,158,26" Name="btSignalStrengthBox" Width="201" />
+                        <Label Content="Free user Flash:" Height="28" Margin="27,323,373,-11" Name="label5" />
+                        <TextBox Height="23" Margin="132,325,158,-8" Name="freeUserFlashBox" Width="201" />
+                        <Label Content="Battery level:" Height="28" Margin="36,354,378,-42" Name="label6" />
+                        <TextBox Height="23" Margin="132,359,158,-42" Name="batteryLevelBox" Width="201" />
+                        <Label Content="Connection:" Height="28" Margin="21,30,397,403" Name="label3" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Motor Control" Name="motorTab">
+                    <Grid>
+                        <Label Content="Motor Control:" Height="28" Margin="189,10,269,424" Name="label7" />
+                        <Button Content="Reset" Height="23" Margin="150,50,321,389" Name="resetMotorButton" Width="75" Click="resetMotorButton_Click" />
+                        <Button Content="Set state" Height="23" Margin="233,51,238,388" Name="setMotorStateButton" Width="75" Click="setMotorStateButton_Click" />
+                        <Button Content="Get state" Height="23" Margin="314,52,153,387" Name="getMotorStateButton" Width="79" Click="getMotorStateButton_Click" />
+                        <ComboBox Height="23" Margin="24,51,402,388" Name="motorCombo" Width="120">
+                            <ComboBoxItem Content="MotorA" />
+                            <ComboBoxItem Content="MotorB" />
+                            <ComboBoxItem Content="MotorC" />
+                        </ComboBox>
+                        <Label Content="Power" Height="28" Margin="32,129,471,305" Name="label8" />
+                        <TextBox Height="23" Margin="81,134,345,305" Name="powerUpDown" Text="70" Width="120" TextChanged="powerUpDown_TextChanged" />
+                        <Label Content="Tacho limit (0 run forever):" Height="28" Margin="32,158,364,276" Name="label9" />
+                        <TextBox Height="23" Margin="188,160,238,279" Name="tachoLimitBox" Text="20" Width="120" />
+                        <CheckBox Content="On" Height="21" IsChecked="True" Margin="61,214,435,227" Name="modeOnCheck" Width="50" />
+                        <CheckBox Content="Brake" Height="21" Margin="115,214,381,227" Name="modeBrakeCheck" Width="50" />
+                        <CheckBox Content="Regulated" Height="21" Margin="171,214,300,227" Name="modeRegulatedBox" Width="75" />
+                        <Label Content="Regulation mode:" Height="28" Margin="23,241,419,193" Name="label10" />
+                        <Label Content="Run state:" Height="28" Margin="24,281,460,153" Name="label11" />
+                        <ComboBox Height="23" Margin="133,246,293,193" Name="regulationModeCombo" Width="120">
+                            <ComboBoxItem Content="Idle" />
+                            <ComboBoxItem Content="Speed" />
+                            <ComboBoxItem Content="Sync" />
+                        </ComboBox>
+                        <ComboBox Height="23" Margin="133,284,293,155" Name="runStateCombo" Width="120">
+                            <ComboBoxItem Content="Idle" />
+                            <ComboBoxItem Content="Rump-Up" />
+                            <ComboBoxItem Content="Running" />
+                            <ComboBoxItem Content="Rump-Down" />
+                        </ComboBox>
+                        <Label Content="Tacho count:" Height="26" Margin="23,318,434,118" Name="label12" Width="89" />
+                        <Label Content="Block tacho count:" Height="26" Margin="23,350,402,86" Name="label13" Width="121" />
+                        <Label Content="Rotation count:" Height="30" Margin="23,382,434,50" Name="label14" Width="89" />
+                        <TextBox Height="26" Margin="133,320,293,116" Name="tachoCountBox" Width="120" />
+                        <TextBox Height="26" Margin="133,352,293,84" Name="blockTachoCountBox" Width="120" />
+                        <TextBox Height="26" Margin="133,384,293,52" Name="rotationCountBox" Width="120" />
+                        <Label Content="Motor State:" Height="28" Margin="10,100,460,334" Name="label24" />
+                        <Label Content="Mode:" Height="28" Margin="32,189,470,245" Name="label25" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Sensor Control" Name="sensorTab">
+                    <Grid>
+                        <ComboBox Height="26" Margin="134,49,299,387" Name="inputPortCombo" Width="113">
+                            <ComboBoxItem Content="Port1" />
+                            <ComboBoxItem Content="Port2" />
+                            <ComboBoxItem Content="Port3" />
+                            <ComboBoxItem Content="Port4" />
+                        </ComboBox>
+                        <Button Content="Get Input" Height="27" Margin="264,47,216,388" Name="getInputButton" Width="66" Click="getInputButton_Click" />
+                        <CheckBox Content="Is Valid" Height="21" Margin="142,100,326,341" Name="validCheck" Width="78" />
+                        <CheckBox Content="Is Calibrated" Height="21" Margin="226,100,232,341" Name="calibratedCheck" Width="88" />
+                        <Label Content="Sensor Type" Height="26" Margin="132,125,325,311" Name="label15" Width="89" />
+                        <Label Content="Sensor mode:" Height="26" Margin="132,157,293,279" Name="label16" Width="121" />
+                        <Label Content="Row:" Height="30" Margin="132,189,325,243" Name="label17" Width="89" />
+                        <TextBox Height="26" Margin="242,127,184,309" Name="sensorTypeBox" Width="120" />
+                        <TextBox Height="26" Margin="242,159,184,277" Name="sensorModeBox" Width="120" />
+                        <TextBox Height="26" Margin="242,191,184,245" Name="rawInputBox" Width="120" />
+                        <Label Content="Normalized:" Height="26" Margin="132,227,325,209" Name="label18" Width="89" />
+                        <Label Content="Scaled:" Height="26" Margin="132,259,293,177" Name="label19" Width="121" />
+                        <Label Content="Calibrated:" Height="30" Margin="132,291,325,141" Name="label20" Width="89" />
+                        <TextBox Height="26" Margin="242,229,184,207" Name="normalizedInputBox" Width="120" />
+                        <TextBox Height="26" Margin="242,261,184,175" Name="scaledInputBox" Width="120" />
+                        <TextBox Height="26" Margin="242,293,184,143" Name="calibratedInputBox" Width="120" />
+                        <Label Content="Sensor type:" Height="28" Margin="132,328,339,106" Name="label21" />
+                        <Label Content="Sensor mode:" Height="28" Margin="132,363,332,71" Name="label22" />
+                        <ComboBox Height="23" Margin="242,330,184,109" Name="sensorTypeCombo" Width="120">
+                            <ComboBoxItem Content="No Sensor" />
+                            <ComboBoxItem Content="Switch" />
+                            <ComboBoxItem Content="Temperature" />
+                            <ComboBoxItem Content="Reflection" />
+                            <ComboBoxItem Content="Angle" />
+                            <ComboBoxItem Content="Light Active" />
+                            <ComboBoxItem Content="Light Inactive" />
+                            <ComboBoxItem Content="Sound (dB)" />
+                            <ComboBoxItem Content="Sound (dBA)" />
+                            <ComboBoxItem Content="Custom" />
+                            <ComboBoxItem Content="Lowspeed" />
+                            <ComboBoxItem Content="Lowspeed 9V" />
+                            <ComboBoxItem Content="HighSpeed" />
+                            <ComboBoxItem Content="ColorFull" />
+                            <ComboBoxItem Content="ColorRed" />
+                            <ComboBoxItem Content="ColorGreen" />
+                            <ComboBoxItem Content="ColorBlue" />
+                            <ComboBoxItem Content="ColorNone" />
+                            <ComboBoxItem Content="ColorExit" />
+                            <ComboBoxItem />
+                            <ComboBoxItem />
+                        </ComboBox>
+                        <ComboBox Height="23" Margin="242,363,184,76" Name="sensorModeCombo" Width="120">
+                            <ComboBoxItem Content="Raw" />
+                            <ComboBoxItem Content="Boolean" />
+                            <ComboBoxItem Content="Transition Counter" />
+                            <ComboBoxItem Content="Periodic Counter" />
+                            <ComboBoxItem Content="PCT Full Scale" />
+                            <ComboBoxItem Content="Celsius" />
+                            <ComboBoxItem Content="Fahrenheit" />
+                            <ComboBoxItem Content="Angle Steps" />
+                        </ComboBox>
+                        <Button Content="Set Mode" Height="27" Margin="268,401,212,34" Name="setInputModeButton" Width="66" Click="setInputModeButton_Click" />
+                        <Label Content="Input Ports:" Height="28" Margin="48,46,0,388" Name="label23" HorizontalAlignment="Left" Width="71" />
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <TextBox Height="64" Name="displayTxt" Width="674" Canvas.Left="0" Canvas.Top="576" />
+        </Canvas>
+        <Button Content="Show Geometry" Height="21" HorizontalAlignment="Left" Margin="53,28,0,0" Name="shownGeometryBtn" VerticalAlignment="Top" Width="132" Click="shownGeometryBtn_Click" />
+        <Button Content="Calibrate" Height="37" Name="calibrateBtn" Width="138" Click="calibrateBtn_Click" Margin="80,588,554,82" />
+        <Button Content="Start Cutting" Height="37" Name="startBtn" Width="166" Click="startBtn_Click" Margin="243,588,363,82" />
+    </Grid>
+</Window>
